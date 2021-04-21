@@ -126,7 +126,6 @@ class LogInViewController: UIViewController {
     @objc private func logInButtonSuccessed() {
         navigationController?.popViewController(animated: true)
         navigationController?.tabBarController?.tabBar.isHidden = false
-        navigationController?.navigationBar.isHidden = false
     }
     
     // MARK: Keyboard Actions

@@ -39,6 +39,9 @@ class ProfileViewController: UIViewController {
     }
     
     private func setupTableView() {
+        navigationController?.navigationBar.isHidden = true
+        view.backgroundColor = .systemGray6
+        
         profilePostsTableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: String(describing: PhotosTableViewCell.self))
         profilePostsTableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: reusedID)
         profilePostsTableView.register(
