@@ -22,12 +22,11 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Profile Header Content
     // User's profile image
-    private var avatarImageView: UIImageView = {
+    public var avatarImageView: UIImageView = {
         let avatarImageView = UIImageView()
         avatarImageView.contentMode = .scaleAspectFill
         avatarImageView.clipsToBounds = true
             
-        avatarImageView.layer.cornerRadius = avatarImageView.frame.width / 2
         avatarImageView.layer.borderWidth = 3
         avatarImageView.layer.borderColor = UIColor.white.cgColor
         
@@ -157,6 +156,13 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
         statusLabel.sizeToFit()
         
         // MARK: Constraints
+        let buttonWidth = setStatusButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -32)
+        buttonWidth.priority = .defaultHigh
+        
+        let fullNameLeading =
+            fullNameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16)
+        fullNameLeading.priority = .defaultHigh
+        
         let constraints = [
             
             avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
@@ -165,7 +171,7 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
             avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor),
             
             fullNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 27),
-            fullNameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
+            fullNameLeading,
             
             statusLabel.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: -18),
             statusLabel.leadingAnchor.constraint(equalTo: fullNameLabel.leadingAnchor),
@@ -177,7 +183,7 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
             
             setStatusButton.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 48),
             setStatusButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 16),
-            setStatusButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -32),
+            buttonWidth,
             setStatusButton.heightAnchor.constraint(equalToConstant: 50)
             
         ]
